@@ -1,0 +1,25 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+ /* Default height for larger screens */
+ .carousel-inner {
+    height: 600px;
+  }
+
+  /* Responsive height adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .carousel-inner {
+      height: 300px; /* Adjust the height for smaller screens */
+    }
+  }
+  
+  .carousel-item {
+    height: 100%;
+  }
