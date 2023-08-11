@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->onUpdate('set null')->onDelete('set null');;
+            $table->foreignId('user_id')->nullable()->constrained()->onUpdate('set null')->onDelete('set null');
             $table->string('title');
             $table->string('image')->nullable();
             $table->string('description');

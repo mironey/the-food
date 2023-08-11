@@ -12,4 +12,12 @@ class Recipe extends Model
     public function users() {
         return $this->belongsTo(User::class);
     }
+
+    public function categories() {
+        return $this->belongsToMany(Category::class, 'categorie_recipe', 'recipe_id', 'categorie_id');
+    }
+
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
+    }
 }

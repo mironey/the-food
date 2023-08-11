@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Category;
 use App\Models\Recipe;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -62,8 +64,34 @@ class DatabaseSeeder extends Seeder
         ]);
         $user->assignRole($role3);
 
+        $cat_terms = ['Breakfast', 'Lunch', 'Dinner', 'Appetizer', 'Salad', 'Main Course', 'Side Dish'];
+        foreach($cat_terms as $cat_term) {
+            Category::create([
+                'name' => $cat_term
+            ]);
+        }
+
+        $tag_terms = ['Healthy', 'Easy Recipes ', 'Featured', 'Vegan', 'Baking', 'Homemade', 'Festive'];
+        foreach($tag_terms as $tag_term) {
+            Tag::create([
+                'name' => $tag_term
+            ]);
+        }
+        
         User::factory(5)->create();
         Recipe::factory(15)->create();
+
+        $recipes = Recipe::all();
+
+        foreach ($recipes as $recipe) {
+            $category = Category::all()->random(rand(1, 7))->pluck('id')->toArray();
+            $recipe->categories()->attach($category);
+        }
+
+        foreach ($recipes as $recipe) {
+            $tag = Tag::all()->random(rand(1, 7))->pluck('id')->toArray();
+            $recipe->tags()->attach($tag);
+        }
 
         // \App\Models\User::factory(10)->create();
 
