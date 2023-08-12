@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\RecipeController;
@@ -21,8 +22,8 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::get('/recipes/{slug}', [RecipeController::class, 'show'])->name('recipe.show');
 
-Route::get('/page/{slug}', [PageController::class, 'index'])->name('page.show');
+Route::get('/page/{slug}', [PageController::class, 'index'])->name('page.index');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');

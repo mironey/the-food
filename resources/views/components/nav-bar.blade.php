@@ -2,7 +2,7 @@
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         @foreach($pages as $page)
-        <li class="nav-item"><a class="nav-link" href="{{route('page.show', $page->slug)}}">{{$page->title}}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{route('page.index', $page->slug)}}">{{$page->title}}</a></li>
         @endforeach
         <li class="nav-item ms-lg-5">
             <form class="d-flex">
