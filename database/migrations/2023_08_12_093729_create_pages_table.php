@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('recipes', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->onUpdate('set null')->onDelete('set null');
             $table->string('title');
-            $table->string('image')->nullable();
-            $table->string('content');
-            $table->string('slug')->unique();
+            $table->text('content');
+            $table->string('slug');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('recipes');
+        Schema::dropIfExists('pages');
     }
 };

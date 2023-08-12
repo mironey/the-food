@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Recipe>
@@ -17,11 +18,14 @@ class RecipeFactory extends Factory
      */
     public function definition(): array
     {
+        $title = fake()->sentence(5);
+        $slug = Str::slug($title, '-');
         return [
             'user_id' => User::all()->random()->id,
-            'title' => fake()->sentence(5),
+            'title' => $title,
             'image' => fake()->imageUrl(850, 350),
-            'description' => fake()->text(200)
+            'content' => fake()->text(200),
+            'slug' => $slug
         ];
     }
 }

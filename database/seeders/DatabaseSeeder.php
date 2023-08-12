@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\Recipe;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Page;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -67,14 +69,23 @@ class DatabaseSeeder extends Seeder
         $cat_terms = ['Breakfast', 'Lunch', 'Dinner', 'Appetizer', 'Salad', 'Main Course', 'Side Dish'];
         foreach($cat_terms as $cat_term) {
             Category::create([
-                'name' => $cat_term
+                'cat_term' => $cat_term
             ]);
         }
 
         $tag_terms = ['Healthy', 'Easy Recipes ', 'Featured', 'Vegan', 'Baking', 'Homemade', 'Festive'];
         foreach($tag_terms as $tag_term) {
             Tag::create([
-                'name' => $tag_term
+                'tag_term' => $tag_term
+            ]);
+        }
+
+        $pages = ['Home', 'About Us', 'Contact Us'];
+        foreach($pages as $page) {
+            Page::create([
+                'title' => $page,
+                'content' => fake()->text(200),
+                'slug' => Str::slug($page, '-')
             ]);
         }
         

@@ -2,22 +2,20 @@
 
 namespace App\View\Components;
 
+use App\Models\Page;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Alert extends Component
+class NavBar extends Component
 {
-
-    public $type;
-    public $post_count;
+    public $pages;
     /**
      * Create a new component instance.
      */
-    public function __construct($message = null, $count)
+    public function __construct()
     {
-        $this->type = $message;
-        $this->post_count = $count;
+        $this->pages = Page::all();
     }
 
     /**
@@ -25,6 +23,8 @@ class Alert extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.alert');
+        return view('components.nav-bar', [
+            'pages' => $this->pages
+        ]);
     }
 }

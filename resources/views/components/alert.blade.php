@@ -1,3 +1,4 @@
 <div>
-    {{ $message }}
+    {{ $type }}
+    {{ $post_count }}
 </div>

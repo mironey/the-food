@@ -7,17 +7,12 @@
             <div class="col-lg-8">
                 <!-- Featured blog post-->
                 <div class="row">
-                    <div class="col">
-                        This is Featured Recipe.
-                    </div>
+                    <x-recipe-box showtype="featured" :showpost="1" />
                 </div>
                 <!-- Nested row for non-featured blog posts-->
                 <div class="row">
-                    <x-recipe-box :recipes="$recipes" />
+                <x-recipe-box showtype="pagination" :showpost="6" />
                 </div>
-
-                <!-- Pagination-->
-                {{$recipes->links('vendor.pagination.bootstrap-5')}}
             </div>
             <!-- Side widgets-->
             <div class="col-lg-4">
